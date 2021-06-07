@@ -102,6 +102,9 @@
                             <constraint firstItem="5cd-dq-zwY" firstAttribute="leading" secondItem="2p8-pJ-zq1" secondAttribute="leading" id="zpv-8G-qTb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="AmY-yO-5mA" id="fjg-aW-Png"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
