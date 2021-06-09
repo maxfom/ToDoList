@@ -15,6 +15,7 @@
 		50C8ED8C266AC24200A375AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C8ED8A266AC24200A375AE /* LaunchScreen.storyboard */; };
 		50C8ED97266AC24200A375AE /* Login_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C8ED96266AC24200A375AE /* Login_AppTests.swift */; };
 		50C8EDA2266AC24200A375AE /* Login_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C8EDA1266AC24200A375AE /* Login_AppUITests.swift */; };
+		9BD296DE2670AB1E00CEAC57 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD296DD2670AB1E00CEAC57 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		50C8ED9D266AC24200A375AE /* Login AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Login AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C8EDA1266AC24200A375AE /* Login_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_AppUITests.swift; sourceTree = "<group>"; };
 		50C8EDA3266AC24200A375AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BD296DD2670AB1E00CEAC57 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				50C8ED7F266AC23E00A375AE /* AppDelegate.swift */,
 				50C8ED81266AC23E00A375AE /* SceneDelegate.swift */,
+				9BD296DD2670AB1E00CEAC57 /* BaseViewController.swift */,
 				50C8ED83266AC23E00A375AE /* ViewController.swift */,
 				50C8ED85266AC23E00A375AE /* Main.storyboard */,
 				50C8ED88266AC24200A375AE /* Assets.xcassets */,
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50C8ED84266AC23E00A375AE /* ViewController.swift in Sources */,
+				9BD296DE2670AB1E00CEAC57 /* BaseViewController.swift in Sources */,
 				50C8ED80266AC23E00A375AE /* AppDelegate.swift in Sources */,
 				50C8ED82266AC23E00A375AE /* SceneDelegate.swift in Sources */,
 			);
