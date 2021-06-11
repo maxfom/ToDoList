@@ -23,7 +23,9 @@ class ViewController: BaseViewController {
         static let incorrectLoginTitle = "Error"
         static let incorrectLoginMessage = "Login/Password is not found"
         static let alertOKButton = "OK"
-        // как добавить константу с изображением ??
+        static let openedEyeImage = UIImage(named: "eye-33.png")!
+        static let closedEyeImage = UIImage(named: "eye-34.png")!
+        static let isSecureTextEntryEnabledOnStart = false
     }
     
     private enum TestUser {
@@ -42,9 +44,7 @@ class ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         reloadButtonIsEnabled()
-        
-        hidePassword.setImage(UIImage(named: "eye-33.png")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        hidePassword.setImage(UIImage(named: "eye-33.png")?.withRenderingMode(.alwaysOriginal), for: .highlighted)
+        hidePasswordToogle(forcedValue: Spec.isSecureTextEntryEnabledOnStart)
     }
     
     @IBAction func nameField(_ sender: UITextField) {
@@ -69,30 +69,32 @@ class ViewController: BaseViewController {
     
     @IBAction func hiddenPass(_ sender: Any) {
         hidePasswordToogle()
-        changeHideImage()
     }
-    
     
     private func reloadButtonIsEnabled() {
         loginButton.isEnabled = name.count >= Spec.minLoginLenght && password.count >= Spec.minPasswordLenght
     }
     
-    private func hidePasswordToogle() {
-        passField.isSecureTextEntry = !passField.isSecureTextEntry
+    private func hidePasswordToogle(forcedValue: Bool? = nil) {
+        passField.isSecureTextEntry = forcedValue ?? !passField.isSecureTextEntry
+        updateHideImage()
     }
     
     // Смена toogle изображения для button - не знаю как вынести в константу
     // сделал условием, понимаю, что плохо
     
-    private func changeHideImage() {
-        if passField.isSecureTextEntry {
-        hidePassword.setImage(UIImage(named: "eye-33.png")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        hidePassword.setImage(UIImage(named: "eye-34.png")?.withRenderingMode(.alwaysOriginal), for: .highlighted)
-        } else {
-            hidePassword.setImage(UIImage(named: "eye-34.png")?.withRenderingMode(.alwaysOriginal), for: .normal)
-            hidePassword.setImage(UIImage(named: "eye-33.png")?.withRenderingMode(.alwaysOriginal), for: .highlighted)
-        
-        }
-    
+    private func updateHideImage() {
+        hidePassword.setImage(
+            passField.isSecureTextEntry ?
+                Spec.openedEyeImage :
+                Spec.closedEyeImage,
+            for: .normal
+        )
+        hidePassword.setImage(
+            passField.isSecureTextEntry ?
+                Spec.closedEyeImage :
+                Spec.openedEyeImage,
+            for: .highlighted
+        )
     }
 }
