@@ -9,7 +9,8 @@ import UIKit
 
 class ViewController: BaseViewController {
     
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var loginButton: StandardButton!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var passField: UITextField!
     @IBOutlet weak var hidePassword: UIButton!
@@ -23,8 +24,9 @@ class ViewController: BaseViewController {
         static let incorrectLoginTitle = "Error"
         static let incorrectLoginMessage = "Login/Password is not found"
         static let alertOKButton = "OK"
-        static let openedEyeImage = UIImage(named: "eye-33.png")!
-        static let closedEyeImage = UIImage(named: "eye-34.png")!
+        static let backgroundImage = Assets.Authorization.background
+        static let openedEyeImage = Assets.Authorization.HidePasswordButton.openedEye
+        static let closedEyeImage = Assets.Authorization.HidePasswordButton.closedEye
         static let isSecureTextEntryEnabledOnStart = false
     }
     
@@ -43,6 +45,8 @@ class ViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLoginButton()
+        setupBackgroundImage()
         reloadButtonIsEnabled()
         hidePasswordToogle(forcedValue: Spec.isSecureTextEntryEnabledOnStart)
     }
@@ -69,6 +73,17 @@ class ViewController: BaseViewController {
     
     @IBAction func hiddenPass(_ sender: Any) {
         hidePasswordToogle()
+    }
+    
+    private func setupLoginButton() {
+        loginButton.setAlpha(1, for: .normal)
+        loginButton.setAlpha(0.8, for: .highlighted)
+        loginButton.setBackgroundColor(UIColor.systemBlue, for: .normal)
+        loginButton.setBackgroundColor(UIColor.darkGray, for: .disabled)
+    }
+    
+    private func setupBackgroundImage() {
+        backgroundImageView.image = Spec.backgroundImage
     }
     
     private func reloadButtonIsEnabled() {
