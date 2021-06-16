@@ -28,6 +28,7 @@ class ViewController: BaseViewController {
         static let openedEyeImage = Assets.Authorization.HidePasswordButton.openedEye
         static let closedEyeImage = Assets.Authorization.HidePasswordButton.closedEye
         static let isSecureTextEntryEnabledOnStart = false
+        static let authSegueIdentificator = "Auth"
     }
     
     private enum TestUser {
@@ -61,9 +62,7 @@ class ViewController: BaseViewController {
     
     @IBAction func loginAction(_ sender: Any) {
         if name == TestUser.login, password == TestUser.password {
-            showAlert(title: Spec.correctLoginTitle, message: Spec.correctLoginMessage, okButton: Spec.alertOKButton) {
-                print("Success ok button action")
-            }
+            showMainViewController()
         } else {
             showAlert(title: Spec.incorrectLoginTitle, message: Spec.incorrectLoginMessage, okButton: Spec.alertOKButton) {
                 print("Failure ok button action")
@@ -111,5 +110,9 @@ class ViewController: BaseViewController {
                 Spec.openedEyeImage,
             for: .highlighted
         )
+    }
+    
+    private func showMainViewController() {
+        performSegue(withIdentifier: Spec.authSegueIdentificator, sender: self)
     }
 }
