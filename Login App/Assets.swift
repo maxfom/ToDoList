@@ -16,6 +16,7 @@ enum Assets {
         }
         
         static let background: UIImage = #imageLiteral(resourceName: "background")
+        static let forgotbackground: UIImage = #imageLiteral(resourceName: "forgotBackground")
     }
 
 }

@@ -14,6 +14,7 @@ class ViewController: BaseViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var passField: UITextField!
     @IBOutlet weak var hidePassword: UIButton!
+    @IBOutlet weak var forgotPassword: UIButton!
     
     // MARK: - Private
     private enum Spec {
@@ -29,6 +30,7 @@ class ViewController: BaseViewController {
         static let closedEyeImage = Assets.Authorization.HidePasswordButton.closedEye
         static let isSecureTextEntryEnabledOnStart = false
         static let authSegueIdentificator = "Auth"
+        static let forgotPasswordLabel = "Forgot password?"
     }
     
     private enum TestUser {
@@ -48,6 +50,7 @@ class ViewController: BaseViewController {
         super.viewDidLoad()
         setupLoginButton()
         setupBackgroundImage()
+        setupForgotButton()
         reloadButtonIsEnabled()
         hidePasswordToogle(forcedValue: Spec.isSecureTextEntryEnabledOnStart)
     }
@@ -74,11 +77,19 @@ class ViewController: BaseViewController {
         hidePasswordToogle()
     }
     
+    @IBAction func forgotPasswordClick(_ sender: Any) {
+        
+    }
+    
     private func setupLoginButton() {
         loginButton.setAlpha(1, for: .normal)
         loginButton.setAlpha(0.8, for: .highlighted)
         loginButton.setBackgroundColor(UIColor.systemBlue, for: .normal)
         loginButton.setBackgroundColor(UIColor.darkGray, for: .disabled)
+    }
+    
+    private func setupForgotButton() {
+        forgotPassword.setTitle(Spec.forgotPasswordLabel, for: .normal)
     }
     
     private func setupBackgroundImage() {
@@ -94,8 +105,6 @@ class ViewController: BaseViewController {
         updateHideImage()
     }
     
-    // Смена toogle изображения для button - не знаю как вынести в константу
-    // сделал условием, понимаю, что плохо
     
     private func updateHideImage() {
         hidePassword.setImage(
