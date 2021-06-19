@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50A1DDF3267BBDD300BA61C3 /* ForgotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A1DDF2267BBDD300BA61C3 /* ForgotViewController.swift */; };
 		50C8ED80266AC23E00A375AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C8ED7F266AC23E00A375AE /* AppDelegate.swift */; };
 		50C8ED82266AC23E00A375AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C8ED81266AC23E00A375AE /* SceneDelegate.swift */; };
 		50C8ED84266AC23E00A375AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C8ED83266AC23E00A375AE /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50A1DDF2267BBDD300BA61C3 /* ForgotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotViewController.swift; sourceTree = "<group>"; };
 		50C8ED7C266AC23E00A375AE /* Login App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Login App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C8ED7F266AC23E00A375AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50C8ED81266AC23E00A375AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,12 +123,13 @@
 				9B051F502679E5430009DC44 /* ToDoListItem.swift */,
 				9B7284EC26734F35005D3C99 /* StandardButton.swift */,
 				50C8ED83266AC23E00A375AE /* ViewController.swift */,
+				50A1DDF2267BBDD300BA61C3 /* ForgotViewController.swift */,
 				9B051F4E2679E3420009DC44 /* ToDoTableViewCell.swift */,
 				9B7284EA26734A62005D3C99 /* Assets.swift */,
 				50C8ED85266AC23E00A375AE /* Main.storyboard */,
+				50C8ED8D266AC24200A375AE /* Info.plist */,
 				50C8ED88266AC24200A375AE /* Assets.xcassets */,
 				50C8ED8A266AC24200A375AE /* LaunchScreen.storyboard */,
-				50C8ED8D266AC24200A375AE /* Info.plist */,
 			);
 			path = "Login App";
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				9B051F4F2679E3420009DC44 /* ToDoTableViewCell.swift in Sources */,
 				9B7284EB26734A62005D3C99 /* Assets.swift in Sources */,
 				9B051F512679E5430009DC44 /* ToDoListItem.swift in Sources */,
+				50A1DDF3267BBDD300BA61C3 /* ForgotViewController.swift in Sources */,
 				50C8ED82266AC23E00A375AE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
