@@ -90,7 +90,7 @@
                                 <rect key="frame" x="80" y="563" width="254" height="30"/>
                                 <state key="normal" title="Forgot password"/>
                                 <connections>
-                                    <segue destination="ywb-00-SKo" kind="presentation" modalTransitionStyle="coverVertical" id="uFq-05-NnK"/>
+                                    <segue destination="fjm-oO-jfc" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="rU5-v9-6n1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -205,6 +205,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="ToDo List" id="89I-bb-itm">
                         <barButtonItem key="backBarButtonItem" title="Back" id="PYw-rN-nq1"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PHi-MP-M30">
+                            <connections>
+                                <action selector="addNewToDoListItem" destination="Zc0-mU-uQm" id="bZu-4t-mxq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="PKs-86-wCy" id="RrK-ab-yNY"/>
@@ -222,7 +227,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="forgotBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Sqj-eB-KJo">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="forgotBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Sqj-eB-KJo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="1"/>
@@ -253,15 +258,25 @@
                                     <action selector="forgotButtonAction" destination="fjm-oO-jfc" eventType="touchUpInside" id="y2k-vn-H1r"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Enz-86-H3z">
+                                <rect key="frame" x="80" y="548" width="254" height="30"/>
+                                <state key="normal" title="Back to login"/>
+                                <connections>
+                                    <segue destination="3ik-lN-Awb" kind="unwind" unwindAction="forgotPasswordUnwindSegue:" id="f6F-3j-8hH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Q0S-dE-Ric"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YkB-s6-Du2" firstAttribute="trailing" secondItem="tbh-MS-1BU" secondAttribute="trailing" id="6Va-gT-1Y7"/>
                             <constraint firstItem="Q0S-dE-Ric" firstAttribute="trailing" secondItem="tbh-MS-1BU" secondAttribute="trailing" constant="80" id="6gG-aO-rMO"/>
+                            <constraint firstItem="Enz-86-H3z" firstAttribute="trailing" secondItem="YkB-s6-Du2" secondAttribute="trailing" id="90c-hX-tVg"/>
                             <constraint firstItem="YkB-s6-Du2" firstAttribute="leading" secondItem="tbh-MS-1BU" secondAttribute="leading" id="DNg-Yy-nNk"/>
+                            <constraint firstItem="Enz-86-H3z" firstAttribute="leading" secondItem="YkB-s6-Du2" secondAttribute="leading" id="EY3-GU-7pj"/>
                             <constraint firstItem="tbh-MS-1BU" firstAttribute="centerY" secondItem="1X1-0S-Dtf" secondAttribute="centerY" id="Gvq-1t-BoS"/>
                             <constraint firstItem="tbh-MS-1BU" firstAttribute="leading" secondItem="Q0S-dE-Ric" secondAttribute="leading" constant="80" id="Loj-yA-Qg6"/>
+                            <constraint firstItem="Enz-86-H3z" firstAttribute="top" secondItem="YkB-s6-Du2" secondAttribute="bottom" constant="14" id="QQE-GG-N3R"/>
                             <constraint firstItem="YkB-s6-Du2" firstAttribute="top" secondItem="tbh-MS-1BU" secondAttribute="bottom" constant="25" id="WPJ-ZH-1F2"/>
                             <constraint firstItem="ggO-RK-lVf" firstAttribute="trailing" secondItem="tbh-MS-1BU" secondAttribute="trailing" id="ad2-ZR-azz"/>
                             <constraint firstItem="ggO-RK-lVf" firstAttribute="leading" secondItem="tbh-MS-1BU" secondAttribute="leading" id="fHX-ch-beg"/>
@@ -278,8 +293,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ho-hG-fpj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="3ik-lN-Awb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1992.753623188406" y="830.35714285714278"/>
+            <point key="canvasLocation" x="1053.6231884057972" y="829.6875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TKu-bX-GfT">
@@ -298,30 +314,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qb0-x8-9up" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1055" y="115"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="3bI-N3-X1z">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ywb-00-SKo" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="vLa-YU-KtE"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="80h-rc-jlB">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zdy-JD-ReX">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="fjm-oO-jfc" kind="relationship" relationship="rootViewController" id="DZ4-nP-Q7i"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="l0q-JU-fZI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1053.5999999999999" y="832.75862068965523"/>
         </scene>
     </scenes>
     <resources>

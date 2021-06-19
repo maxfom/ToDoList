@@ -77,7 +77,7 @@ class ViewController: BaseViewController {
         hidePasswordToogle()
     }
     
-    @IBAction func forgotPasswordClick(_ sender: Any) {
+    @IBAction func forgotPasswordUnwindSegue(_ segue: UIStoryboardSegue) {
         
     }
     

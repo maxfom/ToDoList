@@ -11,15 +11,36 @@ class ToDoListViewController: BaseTableViewController {
 
     // MARK: - Private
     private enum Spec {
-        static let exampleItems: [ToDoListItem] = [
-            ToDoListItem(title: "Помыть посуду", isDone: false),
-            ToDoListItem(title: "Погулять с собакой", isDone: true),
-            ToDoListItem(title: "Сходить за продуктами в ближайший магазин в 19:00 после работы если будет желание.", isDone: true)
-        ]
+        static let newItemAlertTitle = "Добавить задачу"
+        static let newItemAlertMessage = "Введите текст вашей задачи"
+        static let newItemAlertOkButtonTitle = "Сохранить"
+        static let newItemAlertCancelButtonTitle = "Отмена"
+        static let newItemAlertTextFieldPlaceholder = ""
     }
 
-    var items: [ToDoListItem] = Spec.exampleItems
+    var items: [ToDoListItem] = []
 
+    @IBAction func addNewToDoListItem() {
+        showAlert(
+            title: Spec.newItemAlertTitle,
+            message: Spec.newItemAlertMessage,
+            cancelButton: Spec.newItemAlertCancelButtonTitle,
+            okButton: Spec.newItemAlertOkButtonTitle,
+            okAction: { [weak self] itemTitle in
+                guard let self = self,
+                      let itemTitle = itemTitle
+                else {
+                    return
+                }
+                
+                self.items.append(ToDoListItem(title: itemTitle, isDone: false))
+                self.tableView.reloadData()
+            },
+            hasTextField: true,
+            textFieldPlaceholder: Spec.newItemAlertTextFieldPlaceholder
+        )
+    }
+    
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
