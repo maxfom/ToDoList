@@ -30,7 +30,7 @@ class ViewController: BaseViewController {
         static let closedEyeImage = Assets.Authorization.HidePasswordButton.closedEye
         static let isSecureTextEntryEnabledOnStart = false
         static let authSegueIdentificator = "Auth"
-        static let forgotPasswordLabel = "Forgot password?"
+        static let forgotPasswordButtonTitle = "Forgot password?"
     }
     
     private enum TestUser {
@@ -89,7 +89,7 @@ class ViewController: BaseViewController {
     }
     
     private func setupForgotButton() {
-        forgotPassword.setTitle(Spec.forgotPasswordLabel, for: .normal)
+        forgotPassword.setTitle(Spec.forgotPasswordButtonTitle, for: .normal)
     }
     
     private func setupBackgroundImage() {

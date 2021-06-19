@@ -233,7 +233,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="forgotEmailLabel:" destination="fjm-oO-jfc" eventType="editingChanged" id="zdJ-3B-rby"/>
+                                    <action selector="emailDidChange:" destination="fjm-oO-jfc" eventType="editingChanged" id="Mxa-Q4-PDv"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggO-RK-lVf">
@@ -250,7 +250,7 @@
                                 </constraints>
                                 <state key="normal" title="Send now"/>
                                 <connections>
-                                    <action selector="forgotClick" destination="fjm-oO-jfc" eventType="touchUpInside" id="gnJ-FD-uE5"/>
+                                    <action selector="forgotButtonAction" destination="fjm-oO-jfc" eventType="touchUpInside" id="y2k-vn-H1r"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -272,9 +272,9 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="VkK-Je-hRK"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="forgotBackgroundImageView" destination="Sqj-eB-KJo" id="FEz-hd-xlc"/>
                         <outlet property="forgotButton" destination="YkB-s6-Du2" id="agt-Md-QCv"/>
-                        <outlet property="forgotEmailLabel" destination="tbh-MS-1BU" id="I0x-WN-HWq"/>
-                        <outlet property="forgotbackgroundImageView" destination="Sqj-eB-KJo" id="hhA-QC-F4x"/>
+                        <outlet property="forgotEmailField" destination="tbh-MS-1BU" id="HRu-Je-usK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ho-hG-fpj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -9,51 +9,53 @@ import UIKit
 
 class ForgotViewController: BaseViewController {
     
-    static let forgotError = "Please input email label"
-    static let alertOKButton = "OK"
-    static let errorTitle = "Error"
-    static let successTitle = "Success"
-    static let mailSentTo = "Your password will sent to "
-    static let minEmailLenght = 5
+    // MARK: - Private
+    private enum Spec {
+        static let forgotError = "Please input email label"
+        static let alertOKButton = "OK"
+        static let errorTitle = "Error"
+        static let successTitle = "Success"
+        static let mailSentTo = "Your password will sent to "
+        static let minEmailLenght = 5
+    }
     
-    @IBOutlet weak var forgotbackgroundImageView: UIImageView!
+    @IBOutlet weak var forgotBackgroundImageView: UIImageView!
     @IBOutlet weak var forgotButton: StandardButton!
-    @IBOutlet weak var forgotEmailLabel: UITextField!
+    @IBOutlet weak var forgotEmailField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupForgotButton()
-        reloadButtonForgot()
-        // Do any additional setup after loading the view.
+        reloadForgotButton()
     }
     
     private var email: String {
-        forgotEmailLabel.text ?? ""
+        forgotEmailField.text ?? ""
     }
     
-    @IBAction func forgotEmailLabel(_ sender: UITextField) {
-        reloadButtonForgot()
+    @IBAction func emailDidChange(_ sender: UITextField) {
+        reloadForgotButton()
     }
     
-    private func reloadButtonForgot() {
-        forgotButton.isEnabled = email.count > ForgotViewController.minEmailLenght
+    private func reloadForgotButton() {
+        forgotButton.isEnabled = email.count > Spec.minEmailLenght
     }
     
-    @IBAction func forgotClick() {
-        if email.count > 0 && email.hasSuffix(".ru") {
+    @IBAction func forgotButtonAction() {
+        if email.hasSuffix(".ru") {
             showAlert(
-                title: ForgotViewController.successTitle,
-                message: ForgotViewController.mailSentTo + email,
-                okButton: ForgotViewController.alertOKButton,
+                title: Spec.successTitle,
+                message: Spec.mailSentTo + email,
+                okButton: Spec.alertOKButton,
                 okAction: {
                 }
             )
         }
         else {
             showAlert(
-                title: ForgotViewController.errorTitle,
-                message: ForgotViewController.forgotError,
-                okButton: ForgotViewController.alertOKButton,
+                title: Spec.errorTitle,
+                message: Spec.forgotError,
+                okButton: Spec.alertOKButton,
                 okAction: {
                 }
             )
@@ -65,9 +67,6 @@ class ForgotViewController: BaseViewController {
         forgotButton.setAlpha(0.8, for: .highlighted)
         forgotButton.setBackgroundColor(UIColor.white, for: .normal)
         forgotButton.setBackgroundColor(UIColor.systemGray, for: .highlighted)
-        
     }
     
-    
-
 }
