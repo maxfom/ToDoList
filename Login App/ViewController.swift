@@ -81,6 +81,10 @@ class ViewController: BaseViewController {
         
     }
     
+    @IBAction func listTasksUnwindSegue(_ segue: UIStoryboardSegue) {
+        
+    }
+    
     private func setupLoginButton() {
         loginButton.setAlpha(1, for: .normal)
         loginButton.setAlpha(0.8, for: .highlighted)
