@@ -205,6 +205,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="ToDo List" id="89I-bb-itm">
                         <barButtonItem key="backBarButtonItem" title="Back" id="PYw-rN-nq1"/>
+                        <barButtonItem key="leftBarButtonItem" title="Exit" id="zfJ-wR-ODK">
+                            <connections>
+                                <segue destination="1oS-nk-ZJz" kind="unwind" unwindAction="listTasksUnwindSegue:" id="eBy-h1-lV7"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="PHi-MP-M30">
                             <connections>
                                 <action selector="addNewToDoListItem" destination="Zc0-mU-uQm" id="bZu-4t-mxq"/>
@@ -216,6 +221,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozk-eo-GuZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="1oS-nk-ZJz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1997.5999999999999" y="114.53201970443351"/>
         </scene>
@@ -236,7 +242,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex. ivan@mail.com" textAlignment="natural" minimumFontSize="17" background="forgotBackground" translatesAutoresizingMaskIntoConstraints="NO" id="tbh-MS-1BU">
                                 <rect key="frame" x="80" y="431" width="254" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 <connections>
                                     <action selector="emailDidChange:" destination="fjm-oO-jfc" eventType="editingChanged" id="Mxa-Q4-PDv"/>
                                 </connections>

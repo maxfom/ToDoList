@@ -11,11 +11,11 @@ class ToDoListViewController: BaseTableViewController {
 
     // MARK: - Private
     private enum Spec {
-        static let newItemAlertTitle = "Добавить задачу"
-        static let newItemAlertMessage = "Введите текст вашей задачи"
-        static let newItemAlertOkButtonTitle = "Сохранить"
-        static let newItemAlertCancelButtonTitle = "Отмена"
-        static let newItemAlertTextFieldPlaceholder = ""
+        static let newItemAlertTitle = "Add task"
+        static let newItemAlertMessage = "Input your task here"
+        static let newItemAlertOkButtonTitle = "Save"
+        static let newItemAlertCancelButtonTitle = "Cancel"
+        static let newItemAlertTextFieldPlaceholder = "ex. Buy milk"
     }
 
     var items: [ToDoListItem] = []
