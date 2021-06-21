@@ -207,7 +207,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="PYw-rN-nq1"/>
                         <barButtonItem key="leftBarButtonItem" title="Exit" id="zfJ-wR-ODK">
                             <connections>
-                                <segue destination="1oS-nk-ZJz" kind="unwind" unwindAction="listItemsUnwindSegue:" id="WEw-Su-Og8"/>
+                                <segue destination="1oS-nk-ZJz" kind="unwind" unwindAction="listTasksUnwindSegue:" id="eBy-h1-lV7"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="PHi-MP-M30">
