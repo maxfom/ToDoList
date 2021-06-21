@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  Login App
 //
 //  Created by Максим Фомичев on 04.06.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: BaseViewController {
+class LoginViewController: BaseViewController {
     
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var loginButton: StandardButton!
@@ -28,10 +28,12 @@ class ViewController: BaseViewController {
         static let backgroundImage = Assets.Authorization.background
         static let openedEyeImage = Assets.Authorization.HidePasswordButton.openedEye
         static let closedEyeImage = Assets.Authorization.HidePasswordButton.closedEye
-        static let isSecureTextEntryEnabledOnStart = false
+        static let isSecureTextEntryEnabledOnStart = true
         static let authSegueIdentificator = "Auth"
         static let forgotPasswordButtonTitle = "Forgot password?"
     }
+    
+    private let userDefaultsService = UserDefaultsService()
     
     private enum TestUser {
         static let login = "adminadmin"
@@ -48,6 +50,7 @@ class ViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareLoginPasswordFields()
         setupLoginButton()
         setupBackgroundImage()
         setupForgotButton()
@@ -65,6 +68,7 @@ class ViewController: BaseViewController {
     
     @IBAction func loginAction(_ sender: Any) {
         if name == TestUser.login, password == TestUser.password {
+            userDefaultsService.saveUser(login: name, password: password)
             showMainViewController()
         } else {
             showAlert(title: Spec.incorrectLoginTitle, message: Spec.incorrectLoginMessage, okButton: Spec.alertOKButton) {
@@ -90,6 +94,11 @@ class ViewController: BaseViewController {
         loginButton.setAlpha(0.8, for: .highlighted)
         loginButton.setBackgroundColor(UIColor.systemBlue, for: .normal)
         loginButton.setBackgroundColor(UIColor.darkGray, for: .disabled)
+    }
+    
+    private func prepareLoginPasswordFields() {
+        nameField.text = userDefaultsService.userLogin
+        passField.text = userDefaultsService.userPassword
     }
     
     private func setupForgotButton() {

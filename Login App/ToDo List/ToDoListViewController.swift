@@ -17,9 +17,15 @@ class ToDoListViewController: BaseTableViewController {
         static let newItemAlertCancelButtonTitle = "Cancel"
         static let newItemAlertTextFieldPlaceholder = "ex. Buy milk"
     }
+    
+    private let userDefaultsService = UserDefaultsService()
+    private var items: [ToDoListItem] = []
 
-    var items: [ToDoListItem] = []
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        items = userDefaultsService.toDoList?.map { ToDoListItem(title: $0, isDone: false) } ?? []
+    }
+    
     @IBAction func addNewToDoListItem() {
         showAlert(
             title: Spec.newItemAlertTitle,
@@ -33,6 +39,7 @@ class ToDoListViewController: BaseTableViewController {
                     return
                 }
                 
+                self.userDefaultsService.addToDoListItem(itemTitle)
                 self.items.append(ToDoListItem(title: itemTitle, isDone: false))
                 self.tableView.reloadData()
             },
