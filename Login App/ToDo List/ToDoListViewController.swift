@@ -19,11 +19,14 @@ class ToDoListViewController: BaseTableViewController {
     }
     
     private let userDefaultsService = UserDefaultsService()
-    private var items: [ToDoListItem] = []
+    private var items: [ToDoListItem] = UserDefaultsService().toDoList ?? [] {
+        didSet {
+            try? userDefaultsService.saveToDoList(items)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        items = userDefaultsService.toDoList?.map { ToDoListItem(title: $0, isDone: false) } ?? []
     }
     
     @IBAction func addNewToDoListItem() {
@@ -38,9 +41,8 @@ class ToDoListViewController: BaseTableViewController {
                 else {
                     return
                 }
-                
-                self.userDefaultsService.addToDoListItem(itemTitle)
-                self.items.append(ToDoListItem(title: itemTitle, isDone: false))
+                let item = ToDoListItem(title: itemTitle, isDone: false)
+                self.items.append(item)
                 self.tableView.reloadData()
             },
             hasTextField: true,
@@ -75,7 +77,23 @@ extension ToDoListViewController {
         super.tableView(tableView, didSelectRowAt: indexPath)
         let item = items[indexPath.row]
         item.isDone.toggle()
+        try? userDefaultsService.saveToDoList(items)
         tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        items.remove(at: indexPath.row)
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
     }
     
 }

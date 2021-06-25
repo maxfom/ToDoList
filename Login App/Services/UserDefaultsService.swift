@@ -26,6 +26,10 @@ class UserDefaultsService {
     fileprivate func arrayValue(forKey key: String) -> Array<Any>? {
         userDefaults.array(forKey: key)
     }
+    
+    fileprivate func dataValue(forKey key: String) -> Data? {
+        userDefaults.data(forKey: key)
+    }
 
 }
 
@@ -64,15 +68,32 @@ extension UserDefaultsService {
         static let todoListKey = "todo_list"
     }
     
-    var toDoList: [String]? {
-        guard let array = arrayValue(forKey: ToDoListSpec.todoListKey) else { return nil }
-        return array.compactMap { $0 as? String }
+    public enum ToDoListSaveError: Error {
+        case arrayIndexOutOfBounds
+    }
+        
+    var toDoList: [ToDoListItem]? {
+        guard let data = dataValue(forKey: ToDoListSpec.todoListKey) else { return nil }
+        return try? JSONDecoder().decode([ToDoListItem].self, from: data)
     }
     
-    func addToDoListItem(_ item: String) {
+    func addToDoListItem(_ item: ToDoListItem) throws {
         var currentList = toDoList ?? []
         currentList.append(item)
-        setValue(currentList, forKey: ToDoListSpec.todoListKey)
+        let data = try JSONEncoder().encode(currentList)
+        setValue(data, forKey: ToDoListSpec.todoListKey)
     }
 
+    func removeToDoListItem(at index: Int) throws {
+        guard var newList = toDoList, newList.count > index else { throw ToDoListSaveError.arrayIndexOutOfBounds }
+        newList.remove(at: index)
+        let data = try JSONEncoder().encode(newList)
+        setValue(data, forKey: ToDoListSpec.todoListKey)
+    }
+    
+    func saveToDoList(_ list: [ToDoListItem]) throws {
+        let data = try JSONEncoder().encode(list)
+        setValue(data, forKey: ToDoListSpec.todoListKey)
+    }
+    
 }

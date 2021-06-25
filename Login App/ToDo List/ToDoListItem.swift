@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ToDoListItem {
+class ToDoListItem: Codable {
     
     let title: String
     var isDone: Bool
