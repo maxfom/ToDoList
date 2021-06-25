@@ -16,6 +16,10 @@ class ToDoListViewController: BaseTableViewController {
         static let newItemAlertOkButtonTitle = "Save"
         static let newItemAlertCancelButtonTitle = "Cancel"
         static let newItemAlertTextFieldPlaceholder = "ex. Buy milk"
+        
+        static let newItemErrorAlertTitle = "Error"
+        static let newItemErrorAlertMessage = "Task shouldn't be empty"
+        static let newItemErrorAlertOkButtonTitle = "OK"
     }
     
     private let userDefaultsService = UserDefaultsService()
@@ -36,11 +40,16 @@ class ToDoListViewController: BaseTableViewController {
             cancelButton: Spec.newItemAlertCancelButtonTitle,
             okButton: Spec.newItemAlertOkButtonTitle,
             okAction: { [weak self] itemTitle in
-                guard let self = self,
-                      let itemTitle = itemTitle
-                else {
+                guard let self = self else { return }
+                guard let itemTitle = itemTitle, !itemTitle.isEmpty else {
+                    self.showAlert(
+                        title: Spec.newItemErrorAlertTitle,
+                        message: Spec.newItemErrorAlertMessage,
+                        cancelButton: Spec.newItemErrorAlertOkButtonTitle
+                    )
                     return
                 }
+
                 let item = ToDoListItem(title: itemTitle, isDone: false)
                 self.items.append(item)
                 self.tableView.reloadData()
